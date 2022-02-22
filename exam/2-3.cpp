@@ -23,7 +23,7 @@ int divideSort(vector<int> array, int target) {
 
 int main() {
     vector<int> array = {1, 2, 3, 5, 6};
-    int ans = divideSort(array, 0);
+    int ans = divideSort(array, 4);
 
     if (ans == -1) {
         cout << i << ";" << j << endl;
