@@ -11,59 +11,74 @@
 using namespace std;
 
 class Solution {
-private:
-    vector<vector<int>> graph;
-    vector<vector<bool>> visited;
-    vector<vector<int>> directs = {{1,  0},
-                                   {-1, 0},
-                                   {0,  1},
-                                   {0,  -1}};
 public:
-    int numEnclaves(vector<vector<int>> &grid) {
-        graph = grid;
-        int m = graph.size(), n = graph[0].size();
-        visited = vector<vector<bool>>(m, vector<bool>(n, false));
+    int findRepeatNumber(vector<int> &nums) {
+        int start = 0;
+        int end = nums.size() - 1;
 
-        for (int i = 0; i < m; ++i) {
-            if (graph[i][0] == 1 && !visited[i][0]) dfs(i, 0);
-            if (graph[i][n - 1] == 1 && !visited[i][n - 1]) dfs(i, n - 1);
-        }
+        while (start <= end) {
+            int mid = (end - start) / 2 + start;
 
-        for (int i = 0; i < n; ++i) {
-            if (graph[0][i] == 1 && !visited[0][i]) dfs(0, i);
-            if (graph[m - 1][i] == 1 && !visited[m - 1][i]) dfs(m - 1, i);
-        }
+            int count = countRange(nums, start, mid);
 
-        int ans = 0;
-        for (int i = m; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (graph[i][j] == 1 && !visited[i][j]) ++ans;
+            if (start == end) {
+                if (count > 1) return start;
+                else break;
             }
+
+            if (count > mid - start + 1) end = mid;
+            else start = mid + 1;
         }
 
-        return ans;
+        return -1;
     }
 
-    void dfs(int x, int y) {
-        visited[x][y] = true;
+    int countRange(vector<int> &nums, int start, int end) {
+        int count = 0;
 
-        for (auto direct : directs) {
-            int next_x = x + direct[0];
-            int next_y = y + direct[1];
-            if (!(next_x >= 0 && next_x < graph.size() && next_y >= 0 && next_y < graph[0].size())) continue;
-
-            if (!visited[next_x][next_y] && graph[next_x][next_y] == 1) {
-                dfs(next_x, next_y);
-            }
+        for (int val : nums) {
+            if (val >= start && val <= end) ++count;
         }
+
+        return count;
     }
 };
 
+int countRange(vector<int> &nums, int start, int end);
+
+int getDuplication(vector<int> num) {
+    int start = 0;
+    int end = num.size() - 1;
+
+    while (start <= end) {
+        int mid = (end - start) / 2 + start;
+        int count = countRange(num, start, mid);
+
+        if (end == start) {
+            if (count > 1) return start;
+            else break;
+        }
+
+        if (count > mid - start + 1) end = mid;
+        else start = mid + 1;
+    }
+
+    return -1;
+}
+
+int countRange(vector<int> &nums, int start, int end) {
+    int count = 0;
+    for (int val : nums) {
+        if (val >= start && val <= end) {
+            ++count;
+        }
+    }
+
+    return count;
+}
+
 int main() {
-    Solution solution;
-    vector<vector<int>> grid = {{0, 0, 0, 0},
-                                {1, 0, 1, 0},
-                                {0, 1, 1, 0},
-                                {0, 0, 0, 0}};
-    cout << solution.numEnclaves(grid);
+    int n;
+    cin >> n;
+    if
 }
