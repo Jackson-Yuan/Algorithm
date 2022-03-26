@@ -7,78 +7,92 @@
 #include <queue>
 #include "set"
 #include "stack"
+#include "algorithm"
 
 using namespace std;
 
-class Solution {
-public:
-    int findRepeatNumber(vector<int> &nums) {
-        int start = 0;
-        int end = nums.size() - 1;
+int find(int start, vector<int> &root) {
+    int tmp = start;
+    int res;
+    while (root[tmp] != -1) tmp = root[tmp];
+    res = tmp;
 
-        while (start <= end) {
-            int mid = (end - start) / 2 + start;
-
-            int count = countRange(nums, start, mid);
-
-            if (start == end) {
-                if (count > 1) return start;
-                else break;
-            }
-
-            if (count > mid - start + 1) end = mid;
-            else start = mid + 1;
-        }
-
-        return -1;
+    while (root[start] != -1) {
+        tmp = root[start];
+        root[start] = res;
+        start = tmp;
     }
 
-    int countRange(vector<int> &nums, int start, int end) {
-        int count = 0;
+    return res;
+}
 
-        for (int val : nums) {
-            if (val >= start && val <= end) ++count;
-        }
+struct node {
+    int index;
+    int val;
 
-        return count;
+    bool operator<(const node &b) const {
+        if (val == b.val) return index < b.index;
+        else return val < b.val;
+    }
+
+    node(int index, int val) {
+        this->index = index;
+        this->val = val;
     }
 };
 
-int countRange(vector<int> &nums, int start, int end);
+class Solution {
+public:
+    int maxCoins(vector<int> &nums) {
 
-int getDuplication(vector<int> num) {
-    int start = 0;
-    int end = num.size() - 1;
-
-    while (start <= end) {
-        int mid = (end - start) / 2 + start;
-        int count = countRange(num, start, mid);
-
-        if (end == start) {
-            if (count > 1) return start;
-            else break;
+        set<node> s;
+        for (int i = 0; i < nums.size(); ++i) {
+            node cur(i, nums[i]);
+            s.insert(cur);
         }
 
-        if (count > mid - start + 1) end = mid;
-        else start = mid + 1;
-    }
+        int ans = 0;
 
-    return -1;
-}
 
-int countRange(vector<int> &nums, int start, int end) {
-    int count = 0;
-    for (int val : nums) {
-        if (val >= start && val <= end) {
-            ++count;
+        while (!s.empty()) {
+            auto ite = s.begin();
+            node cur = *ite;
+            s.erase(ite);
+
+
+            int leftIndex = -1, rightIndex = nums.size();
+            int leftVal = 1, rightVal = 1;
+            ite = s.begin();
+            while (ite != s.end()) {
+                if (ite->index < cur.index) {
+                    if (cur.index - ite->index < cur.index - leftIndex) {
+                        leftIndex = ite->index;
+                        leftVal = ite->val;
+                    }
+                } else {
+                    if (ite->index - cur.index < rightIndex - cur.index) {
+                        rightIndex = ite->index;
+                        rightVal = ite->val;
+                    }
+                }
+
+                ++ite;
+            }
+
+
+            ans += leftVal * cur.val * rightVal;
         }
+
+
+        return ans;
+
     }
-
-    return count;
-}
-
+};
 int main() {
-    int n;
-    cin >> n;
-    if
+    int i = 1;
+
+    cout << ();
+
+
 }
+
