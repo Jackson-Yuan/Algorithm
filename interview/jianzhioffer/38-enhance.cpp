@@ -6,7 +6,7 @@ using namespace std;
 
 
 /**
- * 输入一串字符串，求组合而非排列
+ * 杈撳叆涓�涓插瓧绗︿覆锛屾眰缁勫悎鑰岄潪鎺掑垪
  *
  * */
 class Solution {

@@ -6,16 +6,16 @@ using namespace std;
 
 
 /**
- * ÄãÏÖÔÚÊÖÀïÓÐÒ»·Ý´óÐ¡Îªn x nµÄ Íø¸ñ grid£¬ÉÏÃæµÄÃ¿¸ö µ¥Ôª¸ñ ¶¼ÓÃ0ºÍ1±ê¼ÇºÃÁË¡£ÆäÖÐ0´ú±íº£Ñó£¬1´ú±íÂ½µØ
- * ÇëÄãÕÒ³öÒ»¸öº£Ñóµ¥Ôª¸ñ£¬Õâ¸öº£Ñóµ¥Ôª¸ñµ½ÀëËü×î½üµÄÂ½µØµ¥Ôª¸ñµÄ¾àÀëÊÇ×î´óµÄ£¬²¢·µ»Ø¸Ã¾àÀë¡£Èç¹ûÍø¸ñÉÏÖ»ÓÐÂ½µØ»òÕßº£Ñó£¬Çë·µ»Ø-1¡£
- * ÎÒÃÇÕâÀïËµµÄ¾àÀëÊÇ¡¸Âü¹þ¶Ù¾àÀë¡¹£¨Manhattan Distance£©£º(x0, y0) ºÍ(x1, y1)ÕâÁ½¸öµ¥Ôª¸ñÖ®¼äµÄ¾àÀëÊÇ|x0 - x1| + |y0 - y1|¡£
- * Á´½Ó£ºhttps://leetcode-cn.com/problems/as-far-from-land-as-possible
+ * ä½ çŽ°åœ¨æ‰‹é‡Œæœ‰ä¸€ä»½å¤§å°ä¸ºn x nçš„ ç½‘æ ¼ gridï¼Œä¸Šé¢çš„æ¯ä¸ª å•å…ƒæ ¼ éƒ½ç”¨0å’Œ1æ ‡è®°å¥½äº†ã€‚å…¶ä¸­0ä»£è¡¨æµ·æ´‹ï¼Œ1ä»£è¡¨é™†åœ°
+ * è¯·ä½ æ‰¾å‡ºä¸€ä¸ªæµ·æ´‹å•å…ƒæ ¼ï¼Œè¿™ä¸ªæµ·æ´‹å•å…ƒæ ¼åˆ°ç¦»å®ƒæœ€è¿‘çš„é™†åœ°å•å…ƒæ ¼çš„è·ç¦»æ˜¯æœ€å¤§çš„ï¼Œå¹¶è¿”å›žè¯¥è·ç¦»ã€‚å¦‚æžœç½‘æ ¼ä¸Šåªæœ‰é™†åœ°æˆ–è€…æµ·æ´‹ï¼Œè¯·è¿”å›ž-1ã€‚
+ * æˆ‘ä»¬è¿™é‡Œè¯´çš„è·ç¦»æ˜¯ã€Œæ›¼å“ˆé¡¿è·ç¦»ã€ï¼ˆManhattan Distanceï¼‰ï¼š(x0, y0) å’Œ(x1, y1)è¿™ä¸¤ä¸ªå•å…ƒæ ¼ä¹‹é—´çš„è·ç¦»æ˜¯|x0 - x1| + |y0 - y1|ã€‚
+ * é“¾æŽ¥ï¼šhttps://leetcode-cn.com/problems/as-far-from-land-as-possible
  * */
 
 /**
- * ´ËÌâÊÇ¶àÔ´BFSÒ»µÀµäÐÍÀýÌâ£¬¶àÔ´BFS¿ÉÒÔÊÓÎªÓÐ¶à¸öÆðµã£¬¿ªÊ¼¹ã¶ÈÓÅÏÈËÑË÷
- * ÆäÊµ¿ÉÒÔ¼ÙÉèÓÐÒ»¸ö³¬¼¶Ô´µã£¬Õâ¸öÔ´µãÖ»Óë¶à¸öÆðµãÁ´½Ó£¬ÎÊÌâ¾ÍµÈ¼ÛÎª
- * ´Ó³¬¼¶Ô´µã¿ªÊ¼¹ãËÑÀ´½â¾öÎÊÌâ
+ * æ­¤é¢˜æ˜¯å¤šæºBFSä¸€é“å…¸åž‹ä¾‹é¢˜ï¼Œå¤šæºBFSå¯ä»¥è§†ä¸ºæœ‰å¤šä¸ªèµ·ç‚¹ï¼Œå¼€å§‹å¹¿åº¦ä¼˜å…ˆæœç´¢
+ * å…¶å®žå¯ä»¥å‡è®¾æœ‰ä¸€ä¸ªè¶…çº§æºç‚¹ï¼Œè¿™ä¸ªæºç‚¹åªä¸Žå¤šä¸ªèµ·ç‚¹é“¾æŽ¥ï¼Œé—®é¢˜å°±ç­‰ä»·ä¸º
+ * ä»Žè¶…çº§æºç‚¹å¼€å§‹å¹¿æœæ¥è§£å†³é—®é¢˜
  * */
 struct node {
     int x;

@@ -8,12 +8,12 @@ using namespace std;
 
 /**
  *
- * ÊýÑ§Ô­ÀíÌâ Èô¸É¸öÊý ÅÅÁÐ³É×îÐ¡µÄÊý
+ * æ•°å­¦åŽŸç†é¢˜ è‹¥å¹²ä¸ªæ•° æŽ’åˆ—æˆæœ€å°çš„æ•°
  *
- * Ô­ÀíÎªÀûÓÃÈçÏÂÅÅÐò¹æÔò
- * ÈÎÒâµÄx£¬y  Èôxy < yx(xy±äÏÖÎªÆ´½ÓµÄÊý)£¬Ôòx < y
+ * åŽŸç†ä¸ºåˆ©ç”¨å¦‚ä¸‹æŽ’åºè§„åˆ™
+ * ä»»æ„çš„xï¼Œy  è‹¥xy < yx(xyå˜çŽ°ä¸ºæ‹¼æŽ¥çš„æ•°)ï¼Œåˆ™x < y
  *
- * °´ÕÕ´Ë´ÓÐ¡µ½´óÅÅÐò Ö±½ÓÆ´½Ó¾ÍÊÇ½á¹û
+ * æŒ‰ç…§æ­¤ä»Žå°åˆ°å¤§æŽ’åº ç›´æŽ¥æ‹¼æŽ¥å°±æ˜¯ç»“æžœ
  * */
 bool cmp(string &a, string &b) {
     string a_head = a + b;

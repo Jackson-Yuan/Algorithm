@@ -7,22 +7,22 @@
 using namespace std;
 
 /**
- * ÇëÄãÉè¼ÆÒ»¸öÓÃÓÚ´æ´¢×Ö·û´®¼ÆÊýµÄÊý¾Ý½á¹¹£¬²¢ÄÜ¹»·µ»Ø¼ÆÊý×îÐ¡ºÍ×î´óµÄ×Ö·û´®¡£
- * ÊµÏÖ AllOne Àà£º
- * AllOne() ³õÊ¼»¯Êý¾Ý½á¹¹µÄ¶ÔÏó¡£
- * inc(String key) ×Ö·û´® key µÄ¼ÆÊýÔö¼Ó 1 ¡£Èç¹ûÊý¾Ý½á¹¹ÖÐÉÐ²»´æÔÚ key £¬ÄÇÃ´²åÈë¼ÆÊýÎª 1 µÄ key ¡£
- * dec(String key) ×Ö·û´® key µÄ¼ÆÊý¼õÉÙ 1 ¡£Èç¹û key µÄ¼ÆÊýÔÚ¼õÉÙºóÎª 0 £¬ÄÇÃ´ÐèÒª½«Õâ¸ö key ´ÓÊý¾Ý½á¹¹ÖÐÉ¾³ý¡£²âÊÔÓÃÀý±£Ö¤£ºÔÚ¼õÉÙ¼ÆÊýÇ°£¬key ´æÔÚÓÚÊý¾Ý½á¹¹ÖÐ¡£
- * getMaxKey() ·µ»ØÈÎÒâÒ»¸ö¼ÆÊý×î´óµÄ×Ö·û´®¡£Èç¹ûÃ»ÓÐÔªËØ´æÔÚ£¬·µ»ØÒ»¸ö¿Õ×Ö·û´® "" ¡£
- * getMinKey() ·µ»ØÈÎÒâÒ»¸ö¼ÆÊý×îÐ¡µÄ×Ö·û´®¡£Èç¹ûÃ»ÓÐÔªËØ´æÔÚ£¬·µ»ØÒ»¸ö¿Õ×Ö·û´® "" ¡£
- * Á´½Ó£ºhttps://leetcode-cn.com/problems/all-oone-data-structure
+ * è¯·ä½ è®¾è®¡ä¸€ä¸ªç”¨äºŽå­˜å‚¨å­—ç¬¦ä¸²è®¡æ•°çš„æ•°æ®ç»“æž„ï¼Œå¹¶èƒ½å¤Ÿè¿”å›žè®¡æ•°æœ€å°å’Œæœ€å¤§çš„å­—ç¬¦ä¸²ã€‚
+ * å®žçŽ° AllOne ç±»ï¼š
+ * AllOne() åˆå§‹åŒ–æ•°æ®ç»“æž„çš„å¯¹è±¡ã€‚
+ * inc(String key) å­—ç¬¦ä¸² key çš„è®¡æ•°å¢žåŠ  1 ã€‚å¦‚æžœæ•°æ®ç»“æž„ä¸­å°šä¸å­˜åœ¨ key ï¼Œé‚£ä¹ˆæ’å…¥è®¡æ•°ä¸º 1 çš„ key ã€‚
+ * dec(String key) å­—ç¬¦ä¸² key çš„è®¡æ•°å‡å°‘ 1 ã€‚å¦‚æžœ key çš„è®¡æ•°åœ¨å‡å°‘åŽä¸º 0 ï¼Œé‚£ä¹ˆéœ€è¦å°†è¿™ä¸ª key ä»Žæ•°æ®ç»“æž„ä¸­åˆ é™¤ã€‚æµ‹è¯•ç”¨ä¾‹ä¿è¯ï¼šåœ¨å‡å°‘è®¡æ•°å‰ï¼Œkey å­˜åœ¨äºŽæ•°æ®ç»“æž„ä¸­ã€‚
+ * getMaxKey() è¿”å›žä»»æ„ä¸€ä¸ªè®¡æ•°æœ€å¤§çš„å­—ç¬¦ä¸²ã€‚å¦‚æžœæ²¡æœ‰å…ƒç´ å­˜åœ¨ï¼Œè¿”å›žä¸€ä¸ªç©ºå­—ç¬¦ä¸² "" ã€‚
+ * getMinKey() è¿”å›žä»»æ„ä¸€ä¸ªè®¡æ•°æœ€å°çš„å­—ç¬¦ä¸²ã€‚å¦‚æžœæ²¡æœ‰å…ƒç´ å­˜åœ¨ï¼Œè¿”å›žä¸€ä¸ªç©ºå­—ç¬¦ä¸² "" ã€‚
+ * é“¾æŽ¥ï¼šhttps://leetcode-cn.com/problems/all-oone-data-structure
  * */
 
 /**
- * ´ËÌâ¾ÍÒ»¸ö¶«Î÷£¬ÀûÓÃ×Ô¶¨Òå½á¹¹ÌåÀ´ÈÃset½øÐÐÅÅÐò£¬ÒÔ´ËÄ£Äâ¶Ñ
+ * æ­¤é¢˜å°±ä¸€ä¸ªä¸œè¥¿ï¼Œåˆ©ç”¨è‡ªå®šä¹‰ç»“æž„ä½“æ¥è®©setè¿›è¡ŒæŽ’åºï¼Œä»¥æ­¤æ¨¡æ‹Ÿå †
  *
- * ×¢ÒâsetÀïÃæÅÐ¶ÌÖØ¸´£¬ÆäÊµ¾ÍÊÇ±È´óÐ¡£¬Èç´ËÌâ£¬°´ÕÕÌâÒâÆäÊµ±¾ÖÊÖ»ÐèÒªcountÅÅ
- * µ«Èç¹ûÖ»ÀûÓÃÁËcount´óÐ¡¹ØÏµ£¬ºöÂÔÁËstr£¬ÄÇÃ´²»Í¬µÄstrÏàÍ¬µÄcount»ØÊÓÎªÒ»ÑùµÄÔªËØ
- * ×¢Òâ½á¹¹Ìå¶¨Òå×Ô¶¨ÒåÅÅÐò¹æÔòÐ´·¨
+ * æ³¨æ„seté‡Œé¢åˆ¤çŸ­é‡å¤ï¼Œå…¶å®žå°±æ˜¯æ¯”å¤§å°ï¼Œå¦‚æ­¤é¢˜ï¼ŒæŒ‰ç…§é¢˜æ„å…¶å®žæœ¬è´¨åªéœ€è¦countæŽ’
+ * ä½†å¦‚æžœåªåˆ©ç”¨äº†countå¤§å°å…³ç³»ï¼Œå¿½ç•¥äº†strï¼Œé‚£ä¹ˆä¸åŒçš„strç›¸åŒçš„countå›žè§†ä¸ºä¸€æ ·çš„å…ƒç´ 
+ * æ³¨æ„ç»“æž„ä½“å®šä¹‰è‡ªå®šä¹‰æŽ’åºè§„åˆ™å†™æ³•
  * */
 struct node {
     string str;

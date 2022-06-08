@@ -6,15 +6,15 @@ using namespace std;
 
 
 /**
- * ¸øÄãÒ»¸öÕûÊýÊý×é nums£¬ÓÐÒ»¸ö´óÐ¡ÎªkµÄ»¬¶¯´°¿Ú´ÓÊý×éµÄ×î×ó²àÒÆ¶¯µ½Êý×éµÄ×îÓÒ²à¡£ÄãÖ»¿ÉÒÔ¿´µ½ÔÚ»¬¶¯´°¿ÚÄÚµÄ k¸öÊý×Ö¡£»¬¶¯´°¿ÚÃ¿´ÎÖ»ÏòÓÒÒÆ¶¯Ò»Î»¡£
- * ·µ»Ø»¬¶¯´°¿ÚÖÐµÄ×î´óÖµ¡£
- * Á´½Ó£ºhttps://leetcode-cn.com/problems/sliding-window-maximum
+ * ç»™ä½ ä¸€ä¸ªæ•´æ•°æ•°ç»„ numsï¼Œæœ‰ä¸€ä¸ªå¤§å°ä¸ºkçš„æ»‘åŠ¨çª—å£ä»Žæ•°ç»„çš„æœ€å·¦ä¾§ç§»åŠ¨åˆ°æ•°ç»„çš„æœ€å³ä¾§ã€‚ä½ åªå¯ä»¥çœ‹åˆ°åœ¨æ»‘åŠ¨çª—å£å†…çš„ kä¸ªæ•°å­—ã€‚æ»‘åŠ¨çª—å£æ¯æ¬¡åªå‘å³ç§»åŠ¨ä¸€ä½ã€‚
+ * è¿”å›žæ»‘åŠ¨çª—å£ä¸­çš„æœ€å¤§å€¼ã€‚
+ * é“¾æŽ¥ï¼šhttps://leetcode-cn.com/problems/sliding-window-maximum
  * */
 
 /**
- * ´ËÌâ£¬µÚÒ»¸ö·½·¨¿ÉÒÔÎ¬»¤Ò»¸ö´óÐ¡ÎªkµÄ×î´ó¶Ñ
- * ´ËÍâÕâ±ßÒýÈëÁíÍâÒ»ÖÖ½â·¨£¬µ¥µ÷¶ÓÁÐ£¨Óëµ¥µ÷Õ»Çø·Ö£©£¬ËüÊÊÓÃÓÚÎ¬»¤Çø¼ä×îÖµÎÊÌâ
- * ¶øµ¥µ÷Õ»ÊÊÓÃÓÚÎ¬»¤×î½üµÄ´óÐ¡¹ØÏµ
+ * æ­¤é¢˜ï¼Œç¬¬ä¸€ä¸ªæ–¹æ³•å¯ä»¥ç»´æŠ¤ä¸€ä¸ªå¤§å°ä¸ºkçš„æœ€å¤§å †
+ * æ­¤å¤–è¿™è¾¹å¼•å…¥å¦å¤–ä¸€ç§è§£æ³•ï¼Œå•è°ƒé˜Ÿåˆ—ï¼ˆä¸Žå•è°ƒæ ˆåŒºåˆ†ï¼‰ï¼Œå®ƒé€‚ç”¨äºŽç»´æŠ¤åŒºé—´æœ€å€¼é—®é¢˜
+ * è€Œå•è°ƒæ ˆé€‚ç”¨äºŽç»´æŠ¤æœ€è¿‘çš„å¤§å°å…³ç³»
  * */
 class Solution {
 public:
@@ -24,7 +24,7 @@ public:
 
         for (int i = 0; i < k; ++i) {
             /**
-             * Õâ±ß¹ØÏµ±È½ÏÒª¼ÓÉÏµÈÓÚ£¬¼´Ê¹ÏàµÈ£¬ÒòÎªÖ»ÓÐk¸ö ÒªÓÃ×îÐÂµÄ
+             * è¿™è¾¹å…³ç³»æ¯”è¾ƒè¦åŠ ä¸Šç­‰äºŽï¼Œå³ä½¿ç›¸ç­‰ï¼Œå› ä¸ºåªæœ‰kä¸ª è¦ç”¨æœ€æ–°çš„
              * */
             while (!q.empty() && nums[i] >= nums[q.back()]) {
                 q.pop_back();

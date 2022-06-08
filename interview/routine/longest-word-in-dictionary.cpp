@@ -4,21 +4,21 @@
 
 using namespace std;
 /**
- * ����һ���ַ�������words ��ɵ�һ��Ӣ��ʵ䡣����words �����һ�����ʣ��õ�������words�ʵ�����������������һ����ĸ��ɡ�
- * �������ж�����еĴ𰸣��򷵻ش����ֵ�����С�ĵ��ʡ����޴𰸣��򷵻ؿ��ַ�����
- * ���ӣ�https://leetcode-cn.com/problems/longest-word-in-dictionary
+ * 给出一个字符串数组words 组成的一本英语词典。返回words 中最长的一个单词，该单词是由words词典中其他单词逐步添加一个字母组成。
+ * 若其中有多个可行的答案，则返回答案中字典序最小的单词。若无答案，则返回空字符串。
+ * 链接：https://leetcode-cn.com/problems/longest-word-in-dictionary
  * */
 
 /**
- * ���⸴ϰһ���ֵ�����ǰ׺�������ã�
- * �ο����ӣ�https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247488490&idx=1&sn=db2998cb0e5f08684ee1b6009b974089&chksm=fd9cb8f5caeb31e3f7f67dba981d8d01a24e26c93ead5491edb521c988adc0798d8acb6f9e9d&token=1006889101&lang=zh_CN&scene=21#wechat_redirect
- * ������Ҫ������
- * next���飺�ַ�����ɵ�Ԫ���Ǹ���ֵ��ֱ�ӿ�26��ǰ׺���󲿷�Ӧ�����ַ�����������˼���������������������
- * isEnd����ǰ�ڵ�����Ƿ�����Ŀ�е�һ������һ�����ʵĽ�β�����ǽ����Ǹ�ǰ׺
+ * 本题复习一下字典树（前缀树的运用）
+ * 参考链接：https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247488490&idx=1&sn=db2998cb0e5f08684ee1b6009b974089&chksm=fd9cb8f5caeb31e3f7f67dba981d8d01a24e26c93ead5491edb521c988adc0798d8acb6f9e9d&token=1006889101&lang=zh_CN&scene=21#wechat_redirect
+ * 两个重要参数：
+ * next数组：字符串组成的元素是个定值，直接开26（前缀树大部分应用于字符串，但这种思想可以套用至其他场景）
+ * isEnd：当前节点表明是否是题目中的一个串（一个单词的结尾）还是仅仅是个前缀
  *
- * ǰ׺����Ҫ���¼����ص㣺
- * 1��ǰ׺�Ŀ���ƥ�䣬�����ַ����Ĺ���ǰ׺ֻ�ᱣ��һ��
- * 2���ַ������ƥ�䣬��������
+ * 前缀树主要以下几个特点：
+ * 1、前缀的快速匹配，几个字符串的公共前缀只会保留一份
+ * 2、字符串间的匹配，比如这题
  * */
 
 class Trie {

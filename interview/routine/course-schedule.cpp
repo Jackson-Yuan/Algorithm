@@ -32,7 +32,7 @@ public:
         visited = vector<int>(numCourses, 0);
         isFind = false;
         for (vector<int> &cur : prerequisites) {
-            link[cur[0]].push_back(cur[1]);
+            link[cur[1]].push_back(cur[0]);
         }
 
 

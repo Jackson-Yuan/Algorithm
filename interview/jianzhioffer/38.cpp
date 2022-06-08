@@ -7,8 +7,8 @@ using namespace std;
 
 
 /**
- * set用于去重 比如求aab这三个字母全排列
- * 不去重会重复
+ * set鐢ㄤ簬鍘婚噸 姣斿姹俛ab杩欎笁涓瓧姣嶅叏鎺掑垪
+ * 涓嶅幓閲嶄細閲嶅
  * */
 class Solution {
 private:

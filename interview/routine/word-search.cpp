@@ -5,16 +5,16 @@
 using namespace std;
 
 /**
- * ����һ��m x n ��ά�ַ�����board ��һ���ַ�������word �����word �����������У����� true �����򣬷��� false ��
- * ���ʱ��밴����ĸ˳��ͨ�����ڵĵ�Ԫ���ڵ���ĸ���ɣ����С����ڡ���Ԫ������Щˮƽ���ڻ�ֱ���ڵĵ�Ԫ��ͬһ����Ԫ���ڵ���ĸ���������ظ�ʹ�á�
- * ���ӣ�https://leetcode-cn.com/problems/word-search
+ * 给定一个m x n 二维字符网格board 和一个字符串单词word 。如果word 存在于网格中，返回 true ；否则，返回 false 。
+ * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
+ * 链接：https://leetcode-cn.com/problems/word-search
  * */
 
 /**
- * ����ΨһҪ˵��һ����ǣ�������������������ʹ�����ô���
- * ��Ȼ�ڷ�����������ʶ����һ�㣬���ڱ�����������ʱ
- * ԭ��auto direct��ĳЩ�����»ᳬʱ������Ϊ
- * auto& direct���ٶ���� ����
+ * 这题唯一要说的一点就是，参数若用来读，尽量使用引用传递
+ * 虽然在方法参数上意识到这一点，但在遍历方向数组时
+ * 原本auto direct在某些用例下会超时，但变为
+ * auto& direct，速度提高 服气
  * */
 
 class Solution {
