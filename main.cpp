@@ -1,98 +1,89 @@
 #include <iostream>
-#include <fstream>
 #include <cassert>
 #include <string>
-#include <map>
-#include <vector>
-#include <queue>
-#include "set"
+#include "map"
+#include "unordered_map"
 #include "stack"
-#include "algorithm"
+#include "vector"
 
 using namespace std;
+struct point {
+    int start;
 
-int find(int start, vector<int> &root) {
-    int tmp = start;
-    int res;
-    while (root[tmp] != -1) tmp = root[tmp];
-    res = tmp;
-
-    while (root[start] != -1) {
-        tmp = root[start];
-        root[start] = res;
-        start = tmp;
-    }
-
-    return res;
-}
-
-struct node {
-    int index;
-    int val;
-
-    bool operator<(const node &b) const {
-        if (val == b.val) return index < b.index;
-        else return val < b.val;
-    }
-
-    node(int index, int val) {
-        this->index = index;
-        this->val = val;
-    }
+    int end;
 };
 
 class Solution {
 public:
-    int maxCoins(vector<int> &nums) {
-
-        set<node> s;
-        for (int i = 0; i < nums.size(); ++i) {
-            node cur(i, nums[i]);
-            s.insert(cur);
+    string minWindow(string s, string t) {
+        unordered_map<char, bool> flag;
+        unordered_map<char, int> mapp;
+        for (char cur: t) {
+            flag[cur] = true;
         }
 
-        int ans = 0;
+        int minDistance = INT_MAX;
+        string resStr = "";
 
 
-        while (!s.empty()) {
-            auto ite = s.begin();
-            node cur = *ite;
-            s.erase(ite);
-
-
-            int leftIndex = -1, rightIndex = nums.size();
-            int leftVal = 1, rightVal = 1;
-            ite = s.begin();
-            while (ite != s.end()) {
-                if (ite->index < cur.index) {
-                    if (cur.index - ite->index < cur.index - leftIndex) {
-                        leftIndex = ite->index;
-                        leftVal = ite->val;
-                    }
-                } else {
-                    if (ite->index - cur.index < rightIndex - cur.index) {
-                        rightIndex = ite->index;
-                        rightVal = ite->val;
-                    }
-                }
-
-                ++ite;
+        for (int i = 0; i < s.length(); ++i) {
+            char cur = s[i];
+            if (flag.find(cur) != flag.end()) {
+                mapp[cur] = i;
             }
 
+            point res = getDistance(mapp, flag);
+            if (res.start != -1 && res.end != -1) {
+                if (res.end - res.start + 1 < minDistance) {
+                    minDistance = res.end - res.start + 1;
+                    resStr = s.substr(res.start, res.end - res.start + 1);
+                }
 
-            ans += leftVal * cur.val * rightVal;
+            }
         }
 
+        return resStr;
+    }
 
-        return ans;
 
+    point getDistance(unordered_map<char, int> &mapp, unordered_map<char, bool> &flag) {
+
+        auto ite = flag.begin();
+        int maxIndex = INT_MIN;
+        int minIndex = INT_MAX;
+
+        point res;
+        while (ite != flag.end()) {
+            auto ite_index = mapp.find(ite->first);
+            if (ite_index == mapp.end()) {
+                res.start = -1;
+                res.end = -1;
+                return res;
+            }
+            if (ite_index->second > maxIndex) {
+                maxIndex = ite_index->second;
+            }
+
+            if (ite_index->second < minIndex) {
+                minIndex = ite_index->second;
+            }
+            ++ite;
+        }
+
+        res.start = minIndex;
+        res.end = maxIndex;
+
+
+        return res;
     }
 };
+
+
+
 int main() {
-    int i = 1;
+    string a = "abc";
 
-    cout << ();
-
+    cout << (a.substr(0, 0) == "");
 
 }
 

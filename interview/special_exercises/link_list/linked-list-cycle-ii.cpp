@@ -1,4 +1,5 @@
 #include "iostream"
+#include "ListNode.h"
 
 using namespace std;
 
@@ -17,12 +18,6 @@ using namespace std;
  * 此时从链表第一个节点开始，同时与慢指针前进，第一个相遇的头节点一定是环的起点。
  * */
 
-struct ListNode {
-    int val;
-    ListNode *next;
-
-    ListNode(int x) : val(x), next(NULL) {}
-};
 
 class Solution {
 public:
@@ -34,7 +29,7 @@ public:
 
 
         bool isFind = false;
-        while (fast && fast->next && slow) {
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
 

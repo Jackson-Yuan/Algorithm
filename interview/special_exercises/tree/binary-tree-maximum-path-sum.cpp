@@ -1,5 +1,6 @@
 #include "iostream"
 #include "algorithm"
+#include "TreeNode.h"
 
 using namespace std;
 /**
@@ -10,22 +11,11 @@ using namespace std;
  * */
 
 /**
- * 本题可以利用动态规划的思想，路径的最大长度可以从从每个节点6个候选路径值中的最大值中取出最大值的最大值
- * 即，当前节点本身的值，左节点，右节点，当前节点+左子树（必须包含左节点）的最大路径长度，当前节点+右子树（必须包含右节点）的最大路径长度，当前节点+左子树（必须包含左节点）的最大路径长度+右子树（必须包含右节点）的最大路径长度
+ * 本题可以利用动态规划的思想（获取谈不上动态规划），路径的最大长度可以从从每个节点4个候选路径值中取出最大值
+ * 即，当前节点本身的值，当前节点+左子树（必须包含左节点）的最大路径长度，当前节点+右子树（必须包含右节点）的最大路径长度，当前节点+左子树（必须包含左节点）的最大路径长度+右子树（必须包含右节点）的最大路径长度
  * 同时，由于利用到动态规划，从树叶节点开始计算，每个节点都有为父节点提供候选项，但提供的候选项必须与父节点组成路径
  * 所以提供的的候选项为当前本身的值，当前节点+左子树（必须包含左节点）的最大路径长度，当前节点+右子树（必须包含右节点）的最大路径长度三个路径的最大值（还需根据左右子树是否存在，删减其中选项）
  * */
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
 
 class Solution {
 private:
@@ -49,9 +39,6 @@ public:
 
             int maxVal = max(allVal, max(leftAllVal, rightAllVal));
             maxVal = max(maxVal, head->val);
-
-            if (head->left) maxVal = max(maxVal, leftVal);
-            if (head->right) maxVal = max(maxVal, rightVal);
 
             ans = max(maxVal, ans);
 
