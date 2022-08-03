@@ -33,5 +33,26 @@ public:
         }
         return ret;
     }
+
+    /**
+     * 另外一种不同的解法
+     * */
+    vector<int> findDisappearedNumbers2(vector<int> &nums) {
+        vector<int> ans;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (i + 1 == nums[i]) continue;
+            while (nums[i] != i + 1) {
+                if (nums[nums[i] - 1] == nums[i]) break;
+                swap(nums[i], nums[nums[i] - 1]);
+            }
+        }
+
+        for (int i = 0; i < nums.size(); ++i) {
+            if (i + 1 != nums[i]) ans.push_back(i + 1);
+        }
+
+
+        return ans;
+    }
 };
 

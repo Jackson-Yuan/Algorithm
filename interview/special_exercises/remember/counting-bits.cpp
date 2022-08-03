@@ -53,7 +53,7 @@ public:
     int judge3(int val) {
         int count = 0;
         while (val) {
-            if (val & 1 == 1) ++count;
+            if ((val & 1) == 1) ++count;
 
             val >>= 1;
         }
