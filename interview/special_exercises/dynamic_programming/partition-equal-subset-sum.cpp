@@ -4,14 +4,13 @@
 
 using namespace std;
 /**
- * ����һ�� ֻ�����������ǿ����� nums�������ж��Ƿ���Խ��������ָ�������Ӽ���ʹ�������Ӽ���Ԫ�غ���ȡ�
- * ���ӣ�https://leetcode.cn/problems/partition-equal-subset-sum/
+ * 给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
+ * 连接：https://leetcode.cn/problems/partition-equal-subset-sum/
  * */
 
 /**
- * ֱ��ת��Ϊ�౳�����⣬dp������������ǰi�����У��ܷ�ѡ������ƴ�ճ�ֵj��j�ķ�ΧΪ0~��������͵�һ��
- * ת�Ʒ���Ҳ�ͺ���⣬��j��������λ��i��������鿴dp[i-1][j] �� dp[i-1][j-nums[i]]
- * ��С�ڣ���ֻ�鿴dp[i-1][j]
+ * 利用动态规划，dp[i][j]代表前i个数能否凑成j，状态转移方程，对于当前索引i，若nums[i]小于j，则dp[i][j] = dp[i - 1][j] | dp[i - 1][j - nums[i]]
+ * 否则dp[i][j] = dp[i-1][j]
  * */
 
 class Solution {

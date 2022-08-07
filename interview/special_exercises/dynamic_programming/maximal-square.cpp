@@ -3,13 +3,13 @@
 
 using namespace std;
 /**
- * ��һ���� '0' �� '1' ��ɵĶ�ά�����ڣ��ҵ�ֻ���� '1' ����������Σ��������������
- * ���ӣ�https://leetcode.cn/problems/maximal-square/
+ * 在一个由 '0' 和 '1' 组成的二维矩阵内，找到只包含 '1' 的最大正方形，并返回其面积。
+ * 链接：https://leetcode.cn/problems/maximal-square/
  * */
 
 /**
- * dp����ĺ����������i��jΪ���½ǵ������εı߳�
- * ״̬ת�Ʒ��̣�dp[i][j]������min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])����ߺ��ϱߺ����⣬б�Ϸ���Ҫ��֤��������ʵ�ĵķǿ��ĵ�
+ * dp数组的含义代表，以i，j为右下角的正方形的边长
+ * 状态转移方程，dp[i][j]来自于min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])，左边和上边好理解，斜上方主要保证正方形是实心的非空心的
  * */
 class Solution {
 public:
