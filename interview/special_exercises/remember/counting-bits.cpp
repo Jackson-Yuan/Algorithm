@@ -14,6 +14,8 @@ using namespace std;
  * 三种方法，第三种好说（但不适用于负数）
  * 第二种适用于正负数（需要规定好1的右移次数）
  * 第一钟适用于正负数，且块，核心思想在于x & （x - 1） 可使得x的最后一个1变为0
+ *
+ * 其中统计负数是要带上符号的1
  * 
  * */
 class Solution {
@@ -61,5 +63,11 @@ public:
         return count;
     }
 };
+
+int main() {
+    int val = 14;
+    val = val & val;
+    cout << val;
+}
 
 
