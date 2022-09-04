@@ -34,6 +34,12 @@ public:
             fast = fast->next->next;
         }
 
+        /**
+         * 此处分割成两条节点一节点是head这个没啥好说的
+         * 另外一个节点只能是low，不要图省事变成low->next
+         * 这么搞你会发现，当割到只剩两个节点时，这种割法压根割不下来
+         * 递归无限嵌套导致直接爆栈
+         * */
         ListNode *head1 = head;
         ListNode *head2 = low;
 
